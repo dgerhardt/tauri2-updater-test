@@ -1,0 +1,6 @@
+<button (click)="downloadAndInstall()" [disabled]="!updateAvailable()">Download and Install</button>
+<br>
+<progress [value]="progress()"></progress> {{ progressP() }} %
+@if (error()) {
+  ⚠️
+}

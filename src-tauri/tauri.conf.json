@@ -34,7 +34,7 @@
   },
   "plugins": {
     "updater": {
-      "pubkey": "",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY4NjI0RjFBMTNFMDhGOEQKUldTTmorQVRHazlpYUhrWnRZWkRVMHZpdGtsS3h0UE00NENWRTNONUIvWEIvamM2QkdsdGREMHcK",
       "endpoints": [
         "https://github.com/dgerhardt/tauri2-updater-test/releases/latest/download/latest.json"
       ]

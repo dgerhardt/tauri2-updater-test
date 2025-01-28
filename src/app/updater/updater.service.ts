@@ -8,6 +8,7 @@ export class UpdaterService {
   private updateAvailable = new BehaviorSubject(false);
   private update?: Update;
   private progress = new BehaviorSubject(0);
+  private time = new BehaviorSubject(0);
   private error = new BehaviorSubject(false);
 
   public async check() {
@@ -33,6 +34,8 @@ export class UpdaterService {
       return;
     }
     this.error.next(false);
+    this.time.next(0);
+    const startTime = (new Date).getTime();
     info('Downloading update...');
     try {
       await this.update.download((event) => {
@@ -55,11 +58,13 @@ export class UpdaterService {
             break;
         }
       });
+      this.time.next((new Date()).getMilliseconds() - startTime);
       info('Installing update...');
       //this.update.install();
     } catch (e) {
       error('An error occurred during download or installation of the update.');
       error(JSON.stringify(e));
+      this.time.next((new Date()).getTime() - startTime);
       this.error.next(true);
       this.progress.next(0);
     }
@@ -72,6 +77,10 @@ export class UpdaterService {
 
   public getProgress(): Observable<number> {
     return this.progress;
+  }
+
+  public getTime(): Observable<number> {
+    return this.time;
   }
 
   public isError(): Observable<boolean> {

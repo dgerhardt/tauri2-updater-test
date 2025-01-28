@@ -14,6 +14,7 @@ export class UpdaterComponent {
   updateAvailable = toSignal(this.updater.isUpdateAvailable());
   progress = toSignal(this.updater.getProgress());
   progressP = computed(() => (this.progress() ?? 0) * 100);
+  time = toSignal(this.updater.getTime());
   error = toSignal(this.updater.isError());
 
   constructor() {

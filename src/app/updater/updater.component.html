@@ -1,6 +1,11 @@
 <button (click)="downloadAndInstall()" [disabled]="!updateAvailable()">Download and Install</button>
 <br>
-<progress [value]="progress()"></progress> {{ progressP() }} %
-@if (error()) {
-  ⚠️
+<div>
+  <progress [value]="progress()"></progress> {{ progressP() }} %
+  @if (error()) {
+    ⚠️
+  }
+</div>
+@if (time()) {
+  <div>{{ time() }} ms</div>
 }

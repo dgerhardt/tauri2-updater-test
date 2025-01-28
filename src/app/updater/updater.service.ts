@@ -59,6 +59,7 @@ export class UpdaterService {
       //this.update.install();
     } catch (e) {
       error('An error occurred during download or installation of the update.');
+      error(JSON.stringify(e));
       this.error.next(true);
       this.progress.next(0);
     }
